@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>ToDo App Timo</title>
+<meta charset="UTF-8" />
+<title>ToDo App Timo</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}" />
 </head>
 <body>
-<h1>ToDo App</h1>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Task</th>
-        <th>Field</th>
-    </tr>
-    <tr th:each="task : ${tasks}">
-        <td th:text="${task.id}">123</td>
-        <td th:text="${task.title}"> Spring in Action</td>
-        <td th:text="${task.field.title}">Wrox</td>
-    </tr>
-</table>
+	<nav class="navbar navbar-light bg-light">
+		<span class="navbar-brand mb-0 h1">ToDo APP</span>
+	</nav>
+
+<!-- TABLE -->
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Task</th>
+			<th>Field</th>
+		</tr>
+		<tr th:each="task : ${tasks}">
+			<td th:text="${task.id}">123</td>
+			<td th:text="${task.title}">Spring in Action</td>
+			<td th:text="${task.field.title}">Wrox</td>
+		</tr>
+	</table>
+<hr>
+<!-- LIST -->
+	<ul id="sortable" class="list-unstyled">
+		<li class="ui-state-default" th:each="task: ${tasks}">
+			<div th:text="${task.title}" class="checkbox">
+				<label> </label>
+			</div>
+		</li>
+	</ul>
+
+<hr>
+<!-- CHECKBOX -->
+	<div class="form-check">
+		<input type="checkbox" class="form-check-input" id="exampleCheck1">
+		<label class="form-check-label" for="exampleCheck1">
+
+			<ul id="sortable" class="list-unstyled">
+				<li class="ui-state-default" th:each="task: ${tasks}">
+					<div th:text="${task.title}" class="checkbox">
+						<label> </label>
+					</div>
+				</li>
+			</ul>
+
+		</label>
+	</div>
+
 
 </body>
 </html>

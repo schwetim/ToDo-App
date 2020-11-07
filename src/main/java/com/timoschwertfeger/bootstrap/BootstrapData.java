@@ -32,21 +32,52 @@ public class BootstrapData implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		// Field
 		Field field = new Field();
 		field.setTitle("Aufgaben");
 		
 		fieldRepository.save(field);
-		System.out.println("Field Count: " + fieldRepository.count());
 		
-		Task task = new Task();
-		task.setTitle("Sauber machen");
+		// Task 1
+		Task task1 = new Task();
+		task1.setTitle("Tanzen");
+		task1.setField(field);
+		field.getTasks().add(task1);
 		
-		task.setField(field);
-		field.getTasks().add(task);
+		taskRepository.save(task1);
+		fieldRepository.save(field);
+
 		
-		taskRepository.save(task);
+		// Task 2
+		Task task2 = new Task();
+		task2.setTitle("Sauber machen");
+		task2.setField(field);
+		field.getTasks().add(task2);
+		
+		taskRepository.save(task2);
 		fieldRepository.save(field);
 		
+		// Task 3
+		Task task3 = new Task();
+		task3.setTitle("Programmieren");
+		task3.setField(field);
+		field.getTasks().add(task3);
+		
+		taskRepository.save(task3);
+		fieldRepository.save(field);
+		
+		// Task 4
+		Task task4 = new Task();
+		task4.setTitle("Hausaufgaben machen");
+		task4.setField(field);
+		field.getTasks().add(task4);
+		
+		taskRepository.save(task4);
+		fieldRepository.save(field);
+
+		
+		System.out.println("Task Count: " + taskRepository.count());
+	
 		
 	}
 
